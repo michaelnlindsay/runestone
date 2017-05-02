@@ -10,7 +10,7 @@ def fill_random(guess):
     """
     letters = 'abcdefghijklmonpqrstuvwxyz '
     for i in range(len(guess)):
-        if (guess[i] == '_'):
+        if (guess[i] == None):
             guess[i] = letters[random.randrange(0, len(letters))]
     return guess
 
@@ -20,7 +20,7 @@ def score_string(guess, target):
         if guess[i] == target[i]:
             score += 1
         else:
-            guess[i] = '_'
+            guess[i] = None
 
     return score
 
