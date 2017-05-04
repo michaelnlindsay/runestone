@@ -1,6 +1,39 @@
-
 import random
 
+## Brad's solution
+def generateOne(strlen):
+    alphabet = 'abcdefghijklmonpqrstuvwxyz '
+    res = ''
+    for i in range(strlen):
+        res += alphabet[random.randrange(len(alphabet))]
+
+    return res
+
+def score(goal, teststring):
+    numMatches = 0
+    for i in range(len(goal)):
+        if goal[i] == teststring[i]:
+            numMatches += 1
+
+    return numMatches / len(goal)
+
+
+def main():
+    goalstring = 'methinks it is like a weasel'
+    newstring = generateOne(len(goalstring))
+    best = 0
+    newscore = score(goalstring, newstring)
+    while score(goalstring, newstring) < 1:
+        if newscore > best:
+            print(newstring, newscore)
+            best = newscore
+        newstring = generateOne(len(goalstring))
+        newscore = score(goalstring, newstring)
+
+
+#main()
+
+## My approach
 def fill_random(guess):
     """
     fill_random(list) -> list
@@ -11,7 +44,7 @@ def fill_random(guess):
     letters = 'abcdefghijklmonpqrstuvwxyz '
     for i in range(len(guess)):
         if (guess[i] == None):
-            guess[i] = letters[random.randrange(0, len(letters))]
+            guess[i] = letters[random.randrange(len(letters))]
     return guess
 
 def score_string(guess, target):
@@ -40,4 +73,4 @@ def start_monkeys():
                 break
 
 
-start_monkeys()
+#start_monkeys()
